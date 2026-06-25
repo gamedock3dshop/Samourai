@@ -3,306 +3,276 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Porte-Encens Samouraï | حامل البخور الساموراي</title>
+<title>Porte-Encens Samouraï | حامل البخور الساموراي - Édition Premium</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --gold:#C9A84C;--gold-light:#E2C26A;--gold-dim:#6B5520;
-  --gold-glow:rgba(201,168,76,0.14);
-  --black:#060606;--dark:#0E0E0E;--card:#131313;
-  --border:rgba(201,168,76,0.18);
-  --text:#EAE2D4;--muted:#7A7060;--white:#FFFFFF;
+:root {
+  /* Premium Gold Palette */
+  --gold: #D4AF37;
+  --gold-light: #F3E5AB;
+  --gold-dim: #8A6D2C;
+  --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  
+  /* Deep Dark Palette */
+  --black: #030303;
+  --dark: #0A0A0A;
+  --card: rgba(20, 20, 20, 0.6);
+  --card-border: rgba(212, 175, 55, 0.15);
+  
+  /* Text */
+  --text: #F8F5F0;
+  --muted: #A39B8E;
+  --white: #FFFFFF;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Inter',sans-serif;font-weight:300;
-  color:var(--text);background:var(--black);overflow-x:hidden;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background-color: var(--black);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.03), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.04), transparent 25%);
+  overflow-x: hidden;
 }
 
 /* ── BILINGUAL HELPERS ── */
-.bilingual{display:flex;flex-direction:column;gap:2px;}
-.txt-fr{font-family:'Inter',sans-serif;text-align:left;direction:ltr;}
-.txt-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;text-align:right;direction:rtl;color:var(--muted);}
-.txt-ar.bright{color:inherit;}
+.bilingual { display: flex; flex-direction: column; gap: 4px; }
+.txt-fr { font-family: 'Inter', sans-serif; text-align: left; direction: ltr; }
+.txt-ar { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; text-align: right; direction: rtl; color: var(--muted); }
 
-/* centered bilingual (for hero/sections) */
-.bi-center{text-align:center;}
-.bi-center .txt-fr,.bi-center .txt-ar{text-align:center;}
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-/* separator between two langs */
-.lang-sep{
-  display:flex;align-items:center;gap:10px;
-  margin:6px 0;opacity:.25;
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 100%; }
+  100% { left: 100%; }
 }
-.lang-sep::before,.lang-sep::after{content:'';flex:1;height:1px;background:var(--gold);}
-.lang-sep span{font-size:10px;letter-spacing:.2em;color:var(--gold);}
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
 
 /* ── HERO ── */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  justify-content:center;align-items:center;text-align:center;
-  padding:80px 24px 80px;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% -5%,rgba(201,168,76,.11) 0%,transparent 65%),
-    radial-gradient(ellipse 40% 30% at 50% 100%,rgba(201,168,76,.05) 0%,transparent 60%);
-  position:relative;
-}
-.hero::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 100px 24px 80px;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+  position: relative;
 }
 
-.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
-.eyebrow-line{width:36px;height:1px;background:var(--gold-dim);}
-.eyebrow-text{
-  font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+.hero-reviews {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 24px;
+  background: rgba(212, 175, 55, 0.1); padding: 6px 16px; border-radius: 100px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+.hero-reviews span { color: var(--gold); font-size: 14px; }
+.hero-reviews p { font-size: 11px; font-weight: 500; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.hero h1 {
+  font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900; line-height: 1.1; color: var(--white);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 12px;
+}
+.hero h1 em {
+  font-style: normal; display: block; font-size: 0.45em; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 8px;
+  background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-ar-title {
+  font-family: 'Segoe UI', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--gold-dim); font-weight: 300; direction: rtl; margin-bottom: 24px;
 }
 
-.hero h1{
-  font-family:'Cinzel',serif;
-  font-size:clamp(2.8rem,8vw,5.8rem);
-  font-weight:900;line-height:1.03;color:var(--white);
-  letter-spacing:.02em;margin-bottom:6px;
+.hero-subs { max-width: 600px; margin: 0 auto 48px; }
+.hero-subs .txt-fr { font-size: 1.1rem; color: var(--muted); line-height: 1.6; text-align: center; }
+.hero-subs .txt-ar { font-size: 1rem; color: rgba(163, 155, 142, 0.7); line-height: 1.6; text-align: center; margin-top: 8px; }
+
+/* ── FORMULAS ── */
+.formula-row {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 40px; width: 100%; max-width: 650px;
 }
-.hero h1 em{
-  font-style:normal;color:var(--gold);display:block;
-  font-size:.55em;font-weight:400;letter-spacing:.2em;
-  text-transform:uppercase;margin-bottom:4px;
+.formula-card {
+  flex: 1; min-width: 250px;
+  border: 1px solid var(--card-border); border-radius: 16px;
+  padding: 30px 20px; cursor: pointer;
+  background: var(--card); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  position: relative; transition: all 0.3s ease;
 }
-.hero-ar-title{
-  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
-  font-size:clamp(1.4rem,4vw,2.6rem);
-  color:rgba(201,168,76,.55);font-weight:300;
-  margin-top:4px;direction:rtl;
+.formula-card:hover { transform: translateY(-5px); border-color: var(--gold-dim); }
+.formula-card.selected {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(20, 20, 20, 0.8) 100%);
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.formula-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gold-gradient); color: var(--black);
+  font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px; white-space: nowrap; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+.formula-qty {
+  font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900;
+  color: var(--white); line-height: 1; margin-bottom: 8px; text-align: center;
+}
+.formula-qty span { font-size: 0.9rem; color: var(--muted); font-weight: 400; font-family: 'Inter', sans-serif;}
+.formula-labels { font-size: 12px; color: var(--muted); margin-bottom: 16px; text-align: center; line-height: 1.6; }
+.formula-price { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 700; color: var(--gold); text-align: center; }
+.formula-price small { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.formula-saving {
+  display: block; text-align: center; margin-top: 12px;
+  background: rgba(212, 175, 55, 0.1); color: var(--gold-light); border: 1px solid rgba(212, 175, 55, 0.2);
+  font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 100px;
 }
 
-.hero-rule{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto;}
+/* ── BUTTONS ── */
+.cta-btn {
+  position: relative; overflow: hidden;
+  display: inline-flex; flex-direction: column; align-items: center;
+  background: var(--gold-gradient); color: var(--black);
+  font-weight: 800; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; padding: 18px 60px; border-radius: 12px;
+  border: none; cursor: pointer; gap: 4px;
+  transition: all 0.3s ease; box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+}
+.cta-btn::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg); animation: shine 4s infinite;
+}
+.cta-btn span.sub { font-size: 12px; font-family: 'Segoe UI', sans-serif; font-weight: 600; opacity: 0.8; letter-spacing: 0.05em; }
+.cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(212, 175, 55, 0.4); }
 
-.hero-subs{display:flex;flex-direction:column;gap:6px;max-width:520px;margin-bottom:48px;}
-.hero-subs .txt-fr{font-size:clamp(.95rem,2vw,1.1rem);color:var(--muted);line-height:1.75;}
-.hero-subs .txt-ar{font-size:clamp(.9rem,1.8vw,1rem);color:rgba(122,112,96,.7);line-height:1.7;}
-
-/* formula row */
-.formula-row{
-  display:flex;gap:16px;justify-content:center;
-  flex-wrap:wrap;margin-bottom:40px;width:100%;max-width:560px;
+/* ── TRUST & SCARCITY ── */
+.trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.trust-pill {
+  display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text);
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 20px; border-radius: 100px;
 }
-.formula-card{
-  flex:1;min-width:210px;
-  border:1px solid var(--border);border-radius:14px;
-  padding:22px 18px;cursor:pointer;
-  background:var(--card);position:relative;
-  transition:border-color .25s,background .25s,transform .2s,box-shadow .25s;
+.scarcity {
+  margin-top: 24px; display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #ff6b6b; font-weight: 500;
 }
-.formula-card:hover{border-color:var(--gold-dim);transform:translateY(-3px);}
-.formula-card.selected{
-  border-color:var(--gold);
-  background:linear-gradient(135deg,rgba(201,168,76,.10),rgba(201,168,76,.03));
-  box-shadow:0 0 28px rgba(201,168,76,.14);
-}
-.formula-badge{
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:var(--gold);color:var(--black);
-  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:3px 12px;border-radius:100px;white-space:nowrap;
-}
-.formula-qty{
-  font-family:'Cinzel',serif;font-size:2.4rem;font-weight:900;
-  color:var(--white);line-height:1;margin-bottom:4px;text-align:center;
-}
-.formula-qty span{font-size:.8rem;color:var(--muted);font-weight:300;}
-.formula-labels{
-  font-size:11px;color:var(--muted);margin-bottom:12px;text-align:center;line-height:1.6;
-}
-.formula-price{
-  font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;
-  color:var(--gold);text-align:center;
-}
-.formula-price small{font-size:.8rem;font-weight:300;color:var(--muted);}
-.formula-saving{
-  display:block;text-align:center;margin-top:8px;
-  background:rgba(201,168,76,.10);color:var(--gold-light);
-  font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;
-}
-
-.cta-btn{
-  display:inline-flex;flex-direction:column;align-items:center;
-  background:var(--gold);color:var(--black);
-  font-weight:700;font-size:15px;
-  letter-spacing:.05em;text-transform:uppercase;
-  text-decoration:none;padding:16px 52px;border-radius:8px;
-  border:none;cursor:pointer;gap:3px;
-  transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 6px 28px rgba(201,168,76,.28);
-  font-family:inherit;
-}
-.cta-btn span.sub{font-size:11px;font-family:'Segoe UI',sans-serif;font-weight:400;opacity:.75;letter-spacing:.05em;}
-.cta-btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 10px 36px rgba(201,168,76,.4);}
-
-.trust-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:36px;}
-.trust-pill{
-  display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
-  padding:7px 14px;border-radius:100px;flex-direction:column;line-height:1.4;
-}
-.trust-pill .tp-fr{font-size:11px;}
-.trust-pill .tp-ar{font-size:10px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;color:rgba(122,112,96,.6);}
-
-/* ── ORNAMENT ── */
-.ornament{text-align:center;padding:8px 0;color:var(--gold-dim);letter-spacing:.5em;font-size:1rem;}
+.scarcity-dot { width: 8px; height: 8px; background: #ff4757; border-radius: 50%; animation: pulse-red 2s infinite; }
 
 /* ── SECTIONS ── */
-.section{padding:70px 24px;max-width:1080px;margin:0 auto;}
-.sec-head{text-align:center;margin-bottom:44px;}
-.sec-eyebrow{
-  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px;display:block;
-}
-.sec-title-fr{
-  font-family:'Cinzel',serif;font-size:clamp(1.4rem,3.5vw,2.2rem);
-  font-weight:700;color:var(--white);line-height:1.2;
-}
-.sec-title-ar{
-  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
-  font-size:clamp(1.1rem,2.5vw,1.7rem);
-  color:rgba(201,168,76,.45);font-weight:300;
-  direction:rtl;margin-top:4px;
-}
-.sec-rule{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto 0;}
+.section { padding: 90px 24px; max-width: 1100px; margin: 0 auto; }
+.sec-head { text-align: center; margin-bottom: 50px; }
+.sec-eyebrow { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+.sec-title-fr { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.2; }
+.sec-title-ar { font-family: 'Segoe UI', sans-serif; font-size: clamp(1.3rem, 3vw, 2rem); color: var(--gold-dim); font-weight: 300; direction: rtl; margin-top: 8px; }
+.sec-rule { width: 60px; height: 2px; background: var(--gold-gradient); margin: 20px auto 0; border-radius: 2px; }
 
 /* ── GALLERY ── */
-.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.gallery-grid .main-img{grid-column:1/-1;}
-.gallery-img{
-  width:100%;display:block;object-fit:cover;border-radius:10px;
-  aspect-ratio:16/10;border:1px solid rgba(201,168,76,.12);
-  transition:transform .35s,border-color .3s,box-shadow .3s;
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.gallery-grid .main-img { grid-column: 1 / -1; }
+.gallery-img {
+  width: 100%; display: block; object-fit: cover; border-radius: 16px;
+  aspect-ratio: 16/10; border: 1px solid var(--card-border);
+  transition: all 0.4s ease; filter: brightness(0.9);
 }
-.main-img .gallery-img{aspect-ratio:16/8;}
-.gallery-img:hover{transform:scale(1.015);border-color:rgba(201,168,76,.35);box-shadow:0 4px 30px rgba(201,168,76,.10);}
-.video-wrap{margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid rgba(201,168,76,.12);}
-.video-wrap video{width:100%;display:block;max-height:480px;object-fit:cover;}
+.main-img .gallery-img { aspect-ratio: 21/9; }
+.gallery-img:hover { transform: scale(1.02); filter: brightness(1.1); border-color: var(--gold); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15); z-index: 2; position: relative; }
+.video-wrap { margin-top: 16px; border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border); position: relative; }
+.video-wrap video { width: 100%; display: block; max-height: 600px; object-fit: cover; }
 
 /* ── FEATURES ── */
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-.feat-card{
-  background:var(--card);border:1px solid rgba(201,168,76,.1);
-  border-radius:14px;padding:28px 18px;text-align:center;
-  transition:border-color .25s,transform .25s,box-shadow .25s;
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.feat-card {
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: 16px; padding: 40px 24px; text-align: center;
+  backdrop-filter: blur(10px); transition: all 0.3s ease;
 }
-.feat-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-4px);box-shadow:0 8px 30px rgba(201,168,76,.08);}
-.feat-icon{font-size:2rem;margin-bottom:14px;display:block;}
-.feat-title-fr{font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:2px;}
-.feat-title-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:.8rem;color:rgba(201,168,76,.4);direction:rtl;margin-bottom:10px;}
-.feat-desc-fr{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:4px;}
-.feat-desc-ar{font-size:11px;color:rgba(122,112,96,.6);line-height:1.6;direction:rtl;font-family:'Segoe UI',Tahoma,Arial,sans-serif;}
+.feat-card:hover { border-color: var(--gold); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1); background: rgba(30, 30, 30, 0.8); }
+.feat-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+.feat-title-fr { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-light); margin-bottom: 4px; }
+.feat-title-ar { font-family: 'Segoe UI', sans-serif; font-size: 1rem; color: var(--gold-dim); direction: rtl; margin-bottom: 16px; }
+.feat-desc-fr { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
+.feat-desc-ar { font-size: 12px; color: rgba(163, 155, 142, 0.7); line-height: 1.7; direction: rtl; font-family: 'Segoe UI', sans-serif; }
 
 /* ── FORM SECTION ── */
-.form-section{
-  padding:80px 24px;
-  background:linear-gradient(180deg,var(--black) 0%,var(--dark) 100%);
-  border-top:1px solid var(--border);
+.form-section {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--black) 0%, #080808 100%);
+  border-top: 1px solid var(--card-border);
 }
-.form-wrap{max-width:560px;margin:0 auto;}
-.form-formula-row{display:flex;gap:12px;margin-bottom:24px;}
-.form-formula-card{
-  flex:1;border:1px solid var(--border);border-radius:10px;
-  padding:16px 12px;text-align:center;cursor:pointer;
-  background:var(--card);transition:border-color .2s,background .2s;
-}
-.form-formula-card.selected{border-color:var(--gold);background:rgba(201,168,76,.07);}
-.ffc-qty{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--white);}
-.ffc-price{font-size:1rem;font-weight:600;color:var(--gold);margin-top:3px;}
-.ffc-labels{font-size:10px;color:rgba(122,112,96,.6);margin-top:3px;line-height:1.5;}
-.ffc-save{font-size:10px;color:var(--gold-light);background:rgba(201,168,76,.10);padding:2px 8px;border-radius:100px;display:inline-block;margin-top:5px;}
+.form-wrap { max-width: 600px; margin: 0 auto; background: var(--card); padding: 40px; border-radius: 24px; border: 1px solid var(--card-border); box-shadow: 0 20px 60px rgba(0,0,0,0.5); backdrop-filter: blur(20px); }
 
-.form-group{margin-bottom:18px;}
-.form-group label{
-  display:flex;justify-content:space-between;align-items:baseline;
-  font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+.form-formula-row { display: flex; gap: 16px; margin-bottom: 30px; }
+.form-formula-card {
+  flex: 1; border: 1px solid var(--card-border); border-radius: 12px;
+  padding: 20px 16px; text-align: center; cursor: pointer;
+  background: rgba(0,0,0,0.4); transition: all 0.3s ease;
 }
-.form-group label span.lbl-ar{
-  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
-  font-size:12px;letter-spacing:0;text-transform:none;
-  color:rgba(201,168,76,.45);direction:rtl;
-}
-.form-group input{
-  width:100%;background:var(--card);border:1px solid rgba(255,255,255,.07);
-  border-radius:8px;padding:14px 16px;color:var(--text);font-size:15px;
-  font-family:inherit;outline:none;transition:border-color .2s;
-}
-.form-group input:focus{border-color:var(--gold-dim);}
-.form-group input::placeholder{color:rgba(122,112,96,.45);}
+.form-formula-card.selected { border-color: var(--gold); background: rgba(212, 175, 55, 0.08); box-shadow: inset 0 0 0 1px var(--gold); }
+.ffc-qty { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 800; color: var(--white); }
+.ffc-price { font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-top: 6px; }
+.ffc-save { font-size: 11px; color: var(--black); background: var(--gold-gradient); padding: 4px 10px; border-radius: 100px; display: inline-block; margin-top: 10px; font-weight: 700; text-transform: uppercase;}
 
-.total-line{
-  background:rgba(201,168,76,.06);border:1px solid var(--gold-dim);
-  border-radius:10px;padding:16px 20px;
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:24px;
+.form-group { margin-bottom: 24px; text-align: left; }
+.form-group label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px; font-weight: 600;
 }
-.total-label{display:flex;flex-direction:column;gap:2px;}
-.total-label .tl-fr{font-size:13px;color:var(--muted);}
-.total-label .tl-ar{font-size:11px;color:rgba(122,112,96,.55);font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;}
-.total-amount{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold);}
-
-.submit-btn{
-  width:100%;background:var(--gold);color:var(--black);
-  font-weight:700;font-size:15px;letter-spacing:.05em;
-  padding:18px;border:none;border-radius:10px;cursor:pointer;
-  font-family:inherit;display:flex;flex-direction:column;
-  align-items:center;gap:3px;
-  transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 6px 28px rgba(201,168,76,.26);
+.form-group label span.lbl-ar { font-family: 'Segoe UI', sans-serif; font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--gold-dim); direction: rtl; }
+.form-group input {
+  width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 18px 20px; color: var(--text); font-size: 16px;
+  font-family: inherit; outline: none; transition: all 0.3s ease;
 }
-.submit-btn .sb-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:12px;font-weight:400;opacity:.7;direction:rtl;}
-.submit-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 36px rgba(201,168,76,.38);}
-.submit-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+.form-group input:focus { border-color: var(--gold); background: rgba(0,0,0,0.8); box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1); }
+.form-group input::placeholder { color: rgba(163, 155, 142, 0.4); }
 
-.form-note{
-  text-align:center;margin-top:16px;font-size:11px;color:var(--muted);
-  display:flex;justify-content:center;gap:18px;flex-wrap:wrap;line-height:1.9;
+.total-line {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.15));
+  border: 1px solid var(--gold-dim); border-radius: 12px; padding: 20px 24px;
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
 }
-.form-note span{display:flex;flex-direction:column;align-items:center;gap:1px;}
-.form-note .fn-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:10px;color:rgba(122,112,96,.5);}
+.total-label { display: flex; flex-direction: column; gap: 4px; }
+.total-label .tl-fr { font-size: 14px; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 0.05em;}
+.total-label .tl-ar { font-size: 13px; color: var(--gold-light); font-family: 'Segoe UI', sans-serif; direction: rtl; }
+.total-amount { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3); }
 
-/* ── MESSAGES ── */
-.msg-box{display:none;border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:14px;line-height:1.7;}
-.msg-box .mb-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;color:inherit;opacity:.8;font-size:13px;margin-top:4px;}
-.msg-success{background:rgba(39,174,96,.10);border:1px solid rgba(39,174,96,.3);color:#6FCF97;}
-.msg-error  {background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);color:#C9A84C;}
+.submit-btn { width: 100%; } /* Hérite de .cta-btn */
+.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; animation: none; filter: grayscale(50%); }
+
+.form-note {
+  text-align: center; margin-top: 24px; font-size: 12px; color: var(--muted);
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+}
+.form-note span { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.form-note .fn-ar { font-family: 'Segoe UI', sans-serif; font-size: 11px; color: var(--gold-dim); }
 
 /* ── WHATSAPP ── */
-.wa-float{
-  position:fixed;bottom:28px;right:28px;z-index:300;
-  width:58px;height:58px;background:#25D366;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;
-  box-shadow:0 4px 20px rgba(37,211,102,.40);
-  animation:wa-pulse 2.8s infinite;transition:transform .2s;
+.wa-float {
+  position: fixed; bottom: 30px; right: 30px; z-index: 300;
+  width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+  animation: wa-pulse 3s infinite; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.wa-float:hover{transform:scale(1.1);}
-.wa-float svg{width:30px;height:30px;fill:#fff;}
-@keyframes wa-pulse{
-  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}
-  50%{box-shadow:0 4px 30px rgba(37,211,102,.65),0 0 0 9px rgba(37,211,102,.10);}
+.wa-float:hover { transform: scale(1.15) rotate(-5deg); }
+.wa-float svg { width: 34px; height: 34px; fill: #fff; }
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
 }
-
-/* ── FOOTER ── */
-footer{
-  text-align:center;padding:32px 24px;font-size:11px;color:var(--muted);
-  border-top:1px solid rgba(201,168,76,.12);background:var(--dark);
-}
-.footer-gold{color:var(--gold);}
-.footer-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;display:block;font-size:10px;color:rgba(122,112,96,.5);margin-top:4px;}
 
 /* ── RESPONSIVE ── */
-@media(max-width:580px){
-  .gallery-grid{grid-template-columns:1fr;}
-  .gallery-grid .main-img{grid-column:1;}
-  .formula-row,.form-formula-row{flex-direction:column;align-items:center;}
-  .formula-card,.form-formula-card{min-width:260px;width:100%;}
-  .trust-row{flex-direction:column;align-items:center;}
+@media(max-width: 768px) {
+  .form-wrap { padding: 30px 20px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid .main-img { grid-column: 1; }
+  .formula-row, .form-formula-row { flex-direction: column; align-items: stretch; }
+  .formula-card, .form-formula-card { width: 100%; }
 }
 </style>
 </head>
@@ -314,78 +284,67 @@ footer{
 </a>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-eyebrow">
-    <div class="eyebrow-line"></div>
-    <div class="eyebrow-text">Collection Exclusive · مجموعة حصرية</div>
-    <div class="eyebrow-line"></div>
+<section class="hero reveal">
+  <div class="hero-reviews">
+    <span>★★★★★</span>
+    <p>4.9/5 - Approuvé par +500 clients</p>
   </div>
 
   <h1>
-    <em>Porte-Encens · حامل البخور</em>
-    Samouraï
+    <em>Édition Limitée</em>
+    Porte-Encens Samouraï
   </h1>
-  <div class="hero-ar-title">الساموراي</div>
-  <div class="hero-rule"></div>
+  <div class="hero-ar-title">حامل البخور الساموراي الإصدار الفاخر</div>
 
   <div class="hero-subs">
-    <div class="txt-fr">Une figurine guerrière sculptée qui transforme votre rituel d'encens en art. Finition mat premium sur plateau en bois.</div>
-    <div class="txt-ar">تمثال محارب منحوت يحوّل طقوس بخورك إلى فن حقيقي. تشطيب فاخر على صينية خشبية.</div>
+    <div class="txt-fr">Une figurine guerrière sculptée qui transforme votre rituel d'encens en un véritable chef-d'œuvre visuel. Conception robuste sur un plateau aux finitions élégantes.</div>
+    <div class="txt-ar">تمثال محارب منحوت يحوّل طقوس بخورك إلى تحفة فنية بصرية. تصميم متين على صينية بتشطيبات أنيقة.</div>
   </div>
 
-  <!-- FORMULA SELECTOR HERO -->
+  <!-- FORMULAS -->
   <div class="formula-row">
     <div class="formula-card selected" id="hero-f1" onclick="selectFormula(1)">
       <div class="formula-qty">1 <span>pièce / قطعة</span></div>
-      <div class="formula-labels">Formule Essentielle<br>الباقة الأساسية</div>
+      <div class="formula-labels">Édition Essentielle<br>الباقة الأساسية</div>
       <div class="formula-price">199 <small>DH</small></div>
     </div>
     <div class="formula-card" id="hero-f2" onclick="selectFormula(2)">
-      <div class="formula-badge">⭐ Meilleure Offre · أفضل عرض</div>
+      <div class="formula-badge">⭐ Choix Premium · الخيار المفضل</div>
       <div class="formula-qty">2 <span>pièces / قطعتان</span></div>
-      <div class="formula-labels">Formule Duo<br>باقة الثنائي</div>
+      <div class="formula-labels">Coffret Duo (Cadeau Idéal)<br>باقة الثنائي (هدية مثالية)</div>
       <div class="formula-price">299 <small>DH</small></div>
       <div class="formula-saving">Économisez 99 DH · وفّر 99 درهم</div>
     </div>
   </div>
 
-  <a href="#order" class="cta-btn">
+  <div class="scarcity">
+    <div class="scarcity-dot"></div>
+    Attention : Plus que 14 pièces en stock ! (الكمية محدودة)
+  </div>
+
+  <a href="#order" class="cta-btn" style="margin-top: 24px;">
     ⚔️ Commander Maintenant
-    <span class="sub">اطلب الآن</span>
+    <span class="sub">اطلب الآن والدفع عند الاستلام</span>
   </a>
 
   <div class="trust-row">
-    <div class="trust-pill">
-      <span>🚚</span>
-      <span class="tp-fr">Livraison gratuite</span>
-      <span class="tp-ar">توصيل مجاني</span>
-    </div>
-    <div class="trust-pill">
-      <span>💰</span>
-      <span class="tp-fr">Paiement à la livraison</span>
-      <span class="tp-ar">الدفع عند الاستلام</span>
-    </div>
-    <div class="trust-pill">
-      <span>🇲🇦</span>
-      <span class="tp-fr">Partout au Maroc</span>
-      <span class="tp-ar">جميع أنحاء المغرب</span>
-    </div>
+    <div class="trust-pill"><span>🚚</span> Livraison Rapide & Gratuite</div>
+    <div class="trust-pill"><span>🛡️</span> Garantie Satisfait ou Remboursé</div>
+    <div class="trust-pill"><span>📦</span> Emballage Sécurisé Premium</div>
   </div>
 </section>
 
-<div class="ornament">― ✦ ―</div>
-
 <!-- ═══ GALLERY ═══ -->
-<div class="section">
+<div class="section reveal">
   <div class="sec-head">
-    <span class="sec-eyebrow">Galerie · معرض المنتج</span>
-    <div class="sec-title-fr">Le Guerrier en Action</div>
-    <div class="sec-title-ar">المقاتل في العمل</div>
+    <span class="sec-eyebrow">Design & Détails · التصميم والتفاصيل</span>
+    <div class="sec-title-fr">L'Art de la Sérénité</div>
+    <div class="sec-title-ar">فن السكينة والهدوء</div>
     <div class="sec-rule"></div>
   </div>
   <div class="gallery-grid">
     <div class="main-img"><img class="gallery-img" src="2.jpeg" alt="Porte-encens samouraï" loading="lazy"/></div>
-    <div><img class="gallery-img" src="1.jpeg" alt="Gros plan" loading="lazy"/></div>
+    <div><img class="gallery-img" src="1.jpeg" alt="Gros plan détails" loading="lazy"/></div>
     <div><img class="gallery-img" src="3.jpeg" alt="Édition dorée" loading="lazy"/></div>
   </div>
   <div class="video-wrap">
@@ -396,94 +355,82 @@ footer{
 </div>
 
 <!-- ═══ FEATURES ═══ -->
-<div class="section" style="padding-top:0">
+<div class="section reveal" style="padding-top:0">
   <div class="sec-head">
-    <span class="sec-eyebrow">Caractéristiques · المميزات</span>
-    <div class="sec-title-fr">Conçu pour l'Excellence</div>
-    <div class="sec-title-ar">صُمّم للتميّز</div>
+    <span class="sec-eyebrow">Savoir-Faire · جودة الصنع</span>
+    <div class="sec-title-fr">Une Qualité Inégalée</div>
+    <div class="sec-title-ar">جودة لا مثيل لها</div>
     <div class="sec-rule"></div>
   </div>
   <div class="features-grid">
     <div class="feat-card">
       <span class="feat-icon">⚔️</span>
-      <div class="feat-title-fr">Résine Premium</div>
-      <div class="feat-title-ar">راتنج ممتاز</div>
-      <p class="feat-desc-fr">Figurine en résine haute densité, détails fins, finition mat noir ou dorée.</p>
-      <p class="feat-desc-ar">تمثال من الراتنج عالي الكثافة بتفاصيل دقيقة، تشطيب أسود أو ذهبي.</p>
+      <div class="feat-title-fr">Sculpture Haute Précision</div>
+      <div class="feat-title-ar">نحت عالي الدقة</div>
+      <p class="feat-desc-fr">Chaque détail de l'armure est minutieusement conçu pour un rendu visuel exceptionnel et une durabilité maximale.</p>
+      <p class="feat-desc-ar">تم تصميم كل تفاصيل الدرع بعناية فائقة لمظهر بصري استثنائي وأقصى درجات المتانة.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">🪵</span>
-      <div class="feat-title-fr">Plateau en Bois</div>
-      <div class="feat-title-ar">صينية خشبية</div>
-      <p class="feat-desc-fr">Plateau ovale en bois massif teinté noir, pour recueillir les cendres avec élégance.</p>
-      <p class="feat-desc-ar">صينية بيضاوية من الخشب الصلب المصبوغ بالأسود، تجمع الرماد بأناقة.</p>
+      <span class="feat-icon">🌑</span>
+      <div class="feat-title-fr">Socle Élégant</div>
+      <div class="feat-title-ar">قاعدة أنيقة</div>
+      <p class="feat-desc-fr">Un plateau lourd et raffiné parfaitement adapté pour recueillir les cendres tout en sublimant la figurine.</p>
+      <p class="feat-desc-ar">صينية راقية ومناسبة تمامًا لجمع الرماد مع إبراز جمال التمثال.</p>
     </div>
     <div class="feat-card">
       <span class="feat-icon">✨</span>
-      <div class="feat-title-fr">Déco & Ambiance</div>
-      <div class="feat-title-ar">ديكور وأجواء</div>
-      <p class="feat-desc-fr">Sublime salon, bureau ou chambre. Atmosphère zen garantie.</p>
-      <p class="feat-desc-ar">يُجمّل الصالون والمكتب والغرفة. أجواء زن مضمونة.</p>
+      <div class="feat-title-fr">Atmosphère Zen</div>
+      <div class="feat-title-ar">أجواء هادئة</div>
+      <p class="feat-desc-fr">Créez un espace de relaxation unique dans votre salon, bureau ou espace de méditation.</p>
+      <p class="feat-desc-ar">اخلق مساحة استرخاء فريدة في صالونك، مكتبك أو مساحة التأمل الخاصة بك.</p>
     </div>
     <div class="feat-card">
       <span class="feat-icon">🎁</span>
-      <div class="feat-title-fr">Cadeau Parfait</div>
-      <div class="feat-title-ar">هدية مثالية</div>
-      <p class="feat-desc-fr">Original et mémorable pour toutes les occasions. Idéal en duo.</p>
-      <p class="feat-desc-ar">أصلية ولا تُنسى لكل المناسبات. مثالية كثنائي للإهداء.</p>
+      <div class="feat-title-fr">Le Cadeau Ultime</div>
+      <div class="feat-title-ar">الهدية الفاخرة</div>
+      <p class="feat-desc-fr">Livré dans un conditionnement soigné, c'est le présent parfait pour marquer les esprits.</p>
+      <p class="feat-desc-ar">يأتي في تغليف أنيق، إنه الهدية المثالية لترك انطباع لا يُنسى.</p>
     </div>
   </div>
 </div>
 
-<div class="ornament">― ✦ ―</div>
-
 <!-- ═══ ORDER FORM ═══ -->
-<div class="form-section" id="order">
+<div class="form-section reveal" id="order">
   <div class="form-wrap">
-    <div class="sec-head">
-      <span class="sec-eyebrow">Commande · الطلب</span>
-      <div class="sec-title-fr">Passez votre commande</div>
-      <div class="sec-title-ar">ضع طلبك الآن</div>
-      <div class="sec-rule"></div>
+    <div class="sec-head" style="margin-bottom: 30px;">
+      <span class="sec-eyebrow">Finaliser · إتمام الطلب</span>
+      <div class="sec-title-fr">Réservez le vôtre</div>
+      <div class="sec-title-ar">احجز طلبك الآن</div>
     </div>
 
-    <div class="msg-box msg-success" id="msg-success">
-      ✅ Commande reçue ! Nous vous contacterons très bientôt.
-      <div class="mb-ar">✅ تم استلام طلبك! سنتواصل معك قريبًا لتأكيد التوصيل.</div>
-    </div>
-    <div class="msg-box msg-error" id="msg-error">
-      ❌ Une erreur s'est produite. Réessayez ou contactez-nous sur WhatsApp.
-      <div class="mb-ar">❌ حدث خطأ. حاول مجددًا أو تواصل معنا عبر واتساب.</div>
-    </div>
-
-    <!-- formula picker form -->
+    <!-- FORMULAS FORM -->
     <div class="form-formula-row">
       <div class="form-formula-card selected" id="form-f1" onclick="selectFormula(1)">
-        <div class="ffc-qty">1 pièce / قطعة</div>
+        <div class="ffc-qty">1 pièce</div>
         <div class="ffc-price">199 DH</div>
       </div>
       <div class="form-formula-card" id="form-f2" onclick="selectFormula(2)">
-        <div class="ffc-qty">2 pièces / قطعتان</div>
+        <div class="ffc-qty">2 pièces</div>
         <div class="ffc-price">299 DH</div>
-        <div class="ffc-save">-99 DH · وفّر</div>
+        <div class="ffc-save">-99 DH (وفّر)</div>
       </div>
     </div>
 
     <div class="form-group">
       <label>Nom complet <span class="lbl-ar">الاسم الكامل</span></label>
-      <input type="text" id="f-name" placeholder="Mohammed Alami / محمد العلمي"/>
+      <input type="text" id="f-name" placeholder="Ex: Mohammed Alami" required/>
     </div>
     <div class="form-group">
       <label>Téléphone <span class="lbl-ar">رقم الهاتف</span></label>
-      <input type="tel" id="f-phone" placeholder="06 XX XX XX XX"/>
+      <input type="tel" id="f-phone" placeholder="Ex: 06 12 34 56 78" required/>
     </div>
     <div class="form-group">
       <label>Ville <span class="lbl-ar">المدينة</span></label>
-      <input type="text" id="f-city" placeholder="Casablanca · Rabat · Marrakech..."/>
+      <input type="text" id="f-city" placeholder="Ex: Casablanca, Rabat..." required/>
     </div>
     <div class="form-group">
-      <label>Adresse <span class="lbl-ar">العنوان</span></label>
-      <input type="text" id="f-address" placeholder="Rue, quartier... / الشارع، الحي..."/>
+      <label>Adresse de livraison <span class="lbl-ar">عنوان التوصيل</span></label>
+      <input type="text" id="f-address" placeholder="Rue, numéro de maison, quartier..." required/>
     </div>
 
     <div class="total-line">
@@ -494,70 +441,86 @@ footer{
       <span class="total-amount" id="total-display">199 DH</span>
     </div>
 
-    <button class="submit-btn" id="submit-btn" onclick="submitOrder()">
-      🛡️ Confirmer — Paiement à la livraison
-      <span class="sb-ar">تأكيد الطلب — الدفع عند الاستلام</span>
+    <button class="cta-btn submit-btn" id="submit-btn" onclick="submitOrder()">
+      🛡️ Valider ma commande
+      <span class="sub">الدفع عند الاستلام — توصيل مجاني</span>
     </button>
 
     <div class="form-note">
-      <span><span>🚚</span><span>Livraison gratuite</span><span class="fn-ar">توصيل مجاني</span></span>
-      <span><span>⏱️</span><span>2–5 jours ouvrés</span><span class="fn-ar">2-5 أيام عمل</span></span>
-      <span><span>💬</span><span>Support WhatsApp</span><span class="fn-ar">دعم واتساب</span></span>
+      <span><span>🔒</span><span>Paiement 100% Sécurisé à la livraison</span></span>
+      <span><span>🚚</span><span>Expédition sous 24h</span></span>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <p><span class="footer-gold">⚔️ Porte-Encens Samouraï · حامل البخور الساموراي</span></p>
-  <span class="footer-ar">توصيل مجاني لجميع أنحاء المغرب · 199 DH / 299 DH</span>
-</footer>
-
 <script>
-  const FORMULAS={1:{price:199,qty:1},2:{price:299,qty:2}};
-  let selectedFormula=1;
+  // ── FORMULAS LOGIC ──
+  const FORMULAS = { 1: { price: 199, qty: 1 }, 2: { price: 299, qty: 2 } };
+  let selectedFormula = 1;
 
-  function selectFormula(f){
-    selectedFormula=f;
-    ['hero-f1','form-f1'].forEach(id=>document.getElementById(id).classList.toggle('selected',f===1));
-    ['hero-f2','form-f2'].forEach(id=>document.getElementById(id).classList.toggle('selected',f===2));
-    document.getElementById('total-display').textContent=FORMULAS[f].price+' DH';
+  function selectFormula(f) {
+    selectedFormula = f;
+    ['hero-f1', 'form-f1'].forEach(id => document.getElementById(id).classList.toggle('selected', f === 1));
+    ['hero-f2', 'form-f2'].forEach(id => document.getElementById(id).classList.toggle('selected', f === 2));
+    document.getElementById('total-display').textContent = FORMULAS[f].price + ' DH';
   }
 
-  async function submitOrder(){
-    const name=document.getElementById('f-name').value.trim();
-    const phone=document.getElementById('f-phone').value.trim();
-    const city=document.getElementById('f-city').value.trim();
-    const address=document.getElementById('f-address').value.trim();
-    if(!name||!phone||!city||!address){
-      alert('Veuillez remplir tous les champs · يرجى ملء جميع الحقول');
+  // ── SUBMIT LOGIC ──
+  async function submitOrder() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const city = document.getElementById('f-city').value.trim();
+    const address = document.getElementById('f-address').value.trim();
+    
+    if(!name || !phone || !city || !address) {
+      alert('Veuillez remplir tous les champs obligatoires.\nيرجى ملء جميع الحقول الإلزامية.');
       return;
     }
-    const btn=document.getElementById('submit-btn');
-    btn.disabled=true;
-    btn.textContent='⏳ Envoi... جاري الإرسال';
+    
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Traitement en cours... <span class="sub">جاري معالجة الطلب</span>';
 
-    const f=FORMULAS[selectedFormula];
-    const params=new URLSearchParams({
-      Nom:name,Telephone:phone,Ville:city,Adresse:address,
-      Formule:selectedFormula===1?'1 pièce - 199 DH':'2 pièces - 299 DH',
-      Quantite:f.qty,Total:f.price+' DH',
-      Date:new Date().toLocaleString('fr-MA')
+    const f = FORMULAS[selectedFormula];
+    const params = new URLSearchParams({
+      Nom: name, Telephone: phone, Ville: city, Adresse: address,
+      Formule: selectedFormula === 1 ? '1 pièce - 199 DH' : '2 pièces - 299 DH',
+      Quantite: f.qty, Total: f.price + ' DH',
+      Date: new Date().toLocaleString('fr-MA')
     });
 
-    try{
+    try {
       await fetch(
-        'https://script.google.com/macros/s/AKfycbyPioZOBcWcgZtUwW_Nxs8BljQeaphUxE_mDzed550eU1Wh9eyiwp11CbSL-gttnX3R/exec?'+params,
-        {method:'GET',mode:'no-cors'}
+        'https://script.google.com/macros/s/AKfycbztHFIfnDfyTE_ma4-XPa3hO4oxXdZN1bYipNcelAqi_-J305TzZxrk29_GULkD1-AW/exec?' + params,
+        { method: 'GET', mode: 'no-cors' }
       );
-      // redirect to thank you page
-      window.location.href='thankyou.html';
-    }catch(e){
-      document.getElementById('msg-error').style.display='block';
-      btn.disabled=false;
-      btn.innerHTML='🛡️ Confirmer — Paiement à la livraison<span class="sb-ar">تأكيد الطلب — الدفع عند الاستلام</span>';
+      window.location.href = 'thankyou.html';
+    } catch(e) {
+      alert('Une erreur est survenue. Veuillez réessayer ou nous contacter sur WhatsApp.\nحدث خطأ. يرجى المحاولة مرة أخرى أو مراسلتنا على واتساب.');
+      btn.disabled = false;
+      btn.innerHTML = '🛡️ Valider ma commande <span class="sub">الدفع عند الاستلام — توصيل مجاني</span>';
     }
   }
+
+  // ── SCROLL REVEAL ANIMATION ──
+  document.addEventListener("DOMContentLoaded", function() {
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(reveal => {
+      observer.observe(reveal);
+    });
+    
+    setTimeout(() => {
+      document.querySelector('.hero').classList.add('active');
+    }, 100);
+  });
 </script>
 </body>
 </html>
