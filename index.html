@@ -1,89 +1,563 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porte-Encens Samouraï - حامل البخور ساموراي</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; }
-        .arabic-text { font-family: 'Cairo', sans-serif; direction: rtl; }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Porte-Encens Samouraï | حامل البخور الساموراي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E2C26A;--gold-dim:#6B5520;
+  --gold-glow:rgba(201,168,76,0.14);
+  --black:#060606;--dark:#0E0E0E;--card:#131313;
+  --border:rgba(201,168,76,0.18);
+  --text:#EAE2D4;--muted:#7A7060;--white:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;font-weight:300;
+  color:var(--text);background:var(--black);overflow-x:hidden;
+}
+
+/* ── BILINGUAL HELPERS ── */
+.bilingual{display:flex;flex-direction:column;gap:2px;}
+.txt-fr{font-family:'Inter',sans-serif;text-align:left;direction:ltr;}
+.txt-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;text-align:right;direction:rtl;color:var(--muted);}
+.txt-ar.bright{color:inherit;}
+
+/* centered bilingual (for hero/sections) */
+.bi-center{text-align:center;}
+.bi-center .txt-fr,.bi-center .txt-ar{text-align:center;}
+
+/* separator between two langs */
+.lang-sep{
+  display:flex;align-items:center;gap:10px;
+  margin:6px 0;opacity:.25;
+}
+.lang-sep::before,.lang-sep::after{content:'';flex:1;height:1px;background:var(--gold);}
+.lang-sep span{font-size:10px;letter-spacing:.2em;color:var(--gold);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:80px 24px 80px;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -5%,rgba(201,168,76,.11) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 30% at 50% 100%,rgba(201,168,76,.05) 0%,transparent 60%);
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
+}
+
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.eyebrow-line{width:36px;height:1px;background:var(--gold-dim);}
+.eyebrow-text{
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+}
+
+.hero h1{
+  font-family:'Cinzel',serif;
+  font-size:clamp(2.8rem,8vw,5.8rem);
+  font-weight:900;line-height:1.03;color:var(--white);
+  letter-spacing:.02em;margin-bottom:6px;
+}
+.hero h1 em{
+  font-style:normal;color:var(--gold);display:block;
+  font-size:.55em;font-weight:400;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:4px;
+}
+.hero-ar-title{
+  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+  font-size:clamp(1.4rem,4vw,2.6rem);
+  color:rgba(201,168,76,.55);font-weight:300;
+  margin-top:4px;direction:rtl;
+}
+
+.hero-rule{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto;}
+
+.hero-subs{display:flex;flex-direction:column;gap:6px;max-width:520px;margin-bottom:48px;}
+.hero-subs .txt-fr{font-size:clamp(.95rem,2vw,1.1rem);color:var(--muted);line-height:1.75;}
+.hero-subs .txt-ar{font-size:clamp(.9rem,1.8vw,1rem);color:rgba(122,112,96,.7);line-height:1.7;}
+
+/* formula row */
+.formula-row{
+  display:flex;gap:16px;justify-content:center;
+  flex-wrap:wrap;margin-bottom:40px;width:100%;max-width:560px;
+}
+.formula-card{
+  flex:1;min-width:210px;
+  border:1px solid var(--border);border-radius:14px;
+  padding:22px 18px;cursor:pointer;
+  background:var(--card);position:relative;
+  transition:border-color .25s,background .25s,transform .2s,box-shadow .25s;
+}
+.formula-card:hover{border-color:var(--gold-dim);transform:translateY(-3px);}
+.formula-card.selected{
+  border-color:var(--gold);
+  background:linear-gradient(135deg,rgba(201,168,76,.10),rgba(201,168,76,.03));
+  box-shadow:0 0 28px rgba(201,168,76,.14);
+}
+.formula-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--black);
+  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 12px;border-radius:100px;white-space:nowrap;
+}
+.formula-qty{
+  font-family:'Cinzel',serif;font-size:2.4rem;font-weight:900;
+  color:var(--white);line-height:1;margin-bottom:4px;text-align:center;
+}
+.formula-qty span{font-size:.8rem;color:var(--muted);font-weight:300;}
+.formula-labels{
+  font-size:11px;color:var(--muted);margin-bottom:12px;text-align:center;line-height:1.6;
+}
+.formula-price{
+  font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;
+  color:var(--gold);text-align:center;
+}
+.formula-price small{font-size:.8rem;font-weight:300;color:var(--muted);}
+.formula-saving{
+  display:block;text-align:center;margin-top:8px;
+  background:rgba(201,168,76,.10);color:var(--gold-light);
+  font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;
+}
+
+.cta-btn{
+  display:inline-flex;flex-direction:column;align-items:center;
+  background:var(--gold);color:var(--black);
+  font-weight:700;font-size:15px;
+  letter-spacing:.05em;text-transform:uppercase;
+  text-decoration:none;padding:16px 52px;border-radius:8px;
+  border:none;cursor:pointer;gap:3px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 6px 28px rgba(201,168,76,.28);
+  font-family:inherit;
+}
+.cta-btn span.sub{font-size:11px;font-family:'Segoe UI',sans-serif;font-weight:400;opacity:.75;letter-spacing:.05em;}
+.cta-btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 10px 36px rgba(201,168,76,.4);}
+
+.trust-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:36px;}
+.trust-pill{
+  display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  padding:7px 14px;border-radius:100px;flex-direction:column;line-height:1.4;
+}
+.trust-pill .tp-fr{font-size:11px;}
+.trust-pill .tp-ar{font-size:10px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;color:rgba(122,112,96,.6);}
+
+/* ── ORNAMENT ── */
+.ornament{text-align:center;padding:8px 0;color:var(--gold-dim);letter-spacing:.5em;font-size:1rem;}
+
+/* ── SECTIONS ── */
+.section{padding:70px 24px;max-width:1080px;margin:0 auto;}
+.sec-head{text-align:center;margin-bottom:44px;}
+.sec-eyebrow{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;display:block;
+}
+.sec-title-fr{
+  font-family:'Cinzel',serif;font-size:clamp(1.4rem,3.5vw,2.2rem);
+  font-weight:700;color:var(--white);line-height:1.2;
+}
+.sec-title-ar{
+  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+  font-size:clamp(1.1rem,2.5vw,1.7rem);
+  color:rgba(201,168,76,.45);font-weight:300;
+  direction:rtl;margin-top:4px;
+}
+.sec-rule{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto 0;}
+
+/* ── GALLERY ── */
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.gallery-grid .main-img{grid-column:1/-1;}
+.gallery-img{
+  width:100%;display:block;object-fit:cover;border-radius:10px;
+  aspect-ratio:16/10;border:1px solid rgba(201,168,76,.12);
+  transition:transform .35s,border-color .3s,box-shadow .3s;
+}
+.main-img .gallery-img{aspect-ratio:16/8;}
+.gallery-img:hover{transform:scale(1.015);border-color:rgba(201,168,76,.35);box-shadow:0 4px 30px rgba(201,168,76,.10);}
+.video-wrap{margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid rgba(201,168,76,.12);}
+.video-wrap video{width:100%;display:block;max-height:480px;object-fit:cover;}
+
+/* ── FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.feat-card{
+  background:var(--card);border:1px solid rgba(201,168,76,.1);
+  border-radius:14px;padding:28px 18px;text-align:center;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.feat-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-4px);box-shadow:0 8px 30px rgba(201,168,76,.08);}
+.feat-icon{font-size:2rem;margin-bottom:14px;display:block;}
+.feat-title-fr{font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:2px;}
+.feat-title-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:.8rem;color:rgba(201,168,76,.4);direction:rtl;margin-bottom:10px;}
+.feat-desc-fr{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:4px;}
+.feat-desc-ar{font-size:11px;color:rgba(122,112,96,.6);line-height:1.6;direction:rtl;font-family:'Segoe UI',Tahoma,Arial,sans-serif;}
+
+/* ── FORM SECTION ── */
+.form-section{
+  padding:80px 24px;
+  background:linear-gradient(180deg,var(--black) 0%,var(--dark) 100%);
+  border-top:1px solid var(--border);
+}
+.form-wrap{max-width:560px;margin:0 auto;}
+.form-formula-row{display:flex;gap:12px;margin-bottom:24px;}
+.form-formula-card{
+  flex:1;border:1px solid var(--border);border-radius:10px;
+  padding:16px 12px;text-align:center;cursor:pointer;
+  background:var(--card);transition:border-color .2s,background .2s;
+}
+.form-formula-card.selected{border-color:var(--gold);background:rgba(201,168,76,.07);}
+.ffc-qty{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--white);}
+.ffc-price{font-size:1rem;font-weight:600;color:var(--gold);margin-top:3px;}
+.ffc-labels{font-size:10px;color:rgba(122,112,96,.6);margin-top:3px;line-height:1.5;}
+.ffc-save{font-size:10px;color:var(--gold-light);background:rgba(201,168,76,.10);padding:2px 8px;border-radius:100px;display:inline-block;margin-top:5px;}
+
+.form-group{margin-bottom:18px;}
+.form-group label{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+}
+.form-group label span.lbl-ar{
+  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+  font-size:12px;letter-spacing:0;text-transform:none;
+  color:rgba(201,168,76,.45);direction:rtl;
+}
+.form-group input{
+  width:100%;background:var(--card);border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;padding:14px 16px;color:var(--text);font-size:15px;
+  font-family:inherit;outline:none;transition:border-color .2s;
+}
+.form-group input:focus{border-color:var(--gold-dim);}
+.form-group input::placeholder{color:rgba(122,112,96,.45);}
+
+.total-line{
+  background:rgba(201,168,76,.06);border:1px solid var(--gold-dim);
+  border-radius:10px;padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:24px;
+}
+.total-label{display:flex;flex-direction:column;gap:2px;}
+.total-label .tl-fr{font-size:13px;color:var(--muted);}
+.total-label .tl-ar{font-size:11px;color:rgba(122,112,96,.55);font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;}
+.total-amount{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold);}
+
+.submit-btn{
+  width:100%;background:var(--gold);color:var(--black);
+  font-weight:700;font-size:15px;letter-spacing:.05em;
+  padding:18px;border:none;border-radius:10px;cursor:pointer;
+  font-family:inherit;display:flex;flex-direction:column;
+  align-items:center;gap:3px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 6px 28px rgba(201,168,76,.26);
+}
+.submit-btn .sb-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:12px;font-weight:400;opacity:.7;direction:rtl;}
+.submit-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 36px rgba(201,168,76,.38);}
+.submit-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+
+.form-note{
+  text-align:center;margin-top:16px;font-size:11px;color:var(--muted);
+  display:flex;justify-content:center;gap:18px;flex-wrap:wrap;line-height:1.9;
+}
+.form-note span{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.form-note .fn-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:10px;color:rgba(122,112,96,.5);}
+
+/* ── MESSAGES ── */
+.msg-box{display:none;border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:14px;line-height:1.7;}
+.msg-box .mb-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;color:inherit;opacity:.8;font-size:13px;margin-top:4px;}
+.msg-success{background:rgba(39,174,96,.10);border:1px solid rgba(39,174,96,.3);color:#6FCF97;}
+.msg-error  {background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);color:#C9A84C;}
+
+/* ── WHATSAPP ── */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  width:58px;height:58px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.40);
+  animation:wa-pulse 2.8s infinite;transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}
+  50%{box-shadow:0 4px 30px rgba(37,211,102,.65),0 0 0 9px rgba(37,211,102,.10);}
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:32px 24px;font-size:11px;color:var(--muted);
+  border-top:1px solid rgba(201,168,76,.12);background:var(--dark);
+}
+.footer-gold{color:var(--gold);}
+.footer-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;display:block;font-size:10px;color:rgba(122,112,96,.5);margin-top:4px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:580px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .gallery-grid .main-img{grid-column:1;}
+  .formula-row,.form-formula-row{flex-direction:column;align-items:center;}
+  .formula-card,.form-formula-card{min-width:260px;width:100%;}
+  .trust-row{flex-direction:column;align-items:center;}
+}
+</style>
 </head>
-<body class="text-gray-800 antialiased relative">
+<body>
 
-    <a href="https://wa.me/212664601352?text=Bonjour,%20je%20suis%20intéressé(e)%20par%20le%20Porte-Encens%20Samouraï." 
-       target="_blank" 
-       class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 hover:bg-green-600 transition-transform transform hover:scale-110 flex items-center justify-center animate-bounce">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-    </a>
+<!-- WHATSAPP -->
+<a class="wa-float" href="https://wa.me/212664601352" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-    <header class="bg-black text-white text-center py-3 sticky top-0 z-40">
-        <p class="text-sm font-bold text-yellow-400 animate-pulse">🔥 Offre Spéciale : 199 DH<br>Paiement à la livraison - الدفع عند الاستلام</p>
-    </header>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <div class="eyebrow-line"></div>
+    <div class="eyebrow-text">Collection Exclusive · مجموعة حصرية</div>
+    <div class="eyebrow-line"></div>
+  </div>
 
-    <main class="max-w-md mx-auto bg-white shadow-2xl min-h-screen pb-10">
-        <div class="px-4 pt-6 pb-4 text-center">
-            <h1 class="text-2xl font-extrabold text-gray-900 mb-2">Porte-Encens Samouraï 🧘‍♂️⚔️</h1>
-            <h1 class="text-2xl font-extrabold text-gray-900 arabic-text">حامل البخور ساموراي 🧘‍♂️⚔️</h1>
-        </div>
+  <h1>
+    <em>Porte-Encens · حامل البخور</em>
+    Samouraï
+  </h1>
+  <div class="hero-ar-title">الساموراي</div>
+  <div class="hero-rule"></div>
 
-        <div class="w-full bg-black">
-            <video class="w-full h-auto" controls autoplay muted loop playsinline>
-                <source src="video.mp4" type="video/mp4">
-            </video>
-        </div>
+  <div class="hero-subs">
+    <div class="txt-fr">Une figurine guerrière sculptée qui transforme votre rituel d'encens en art. Finition mat premium sur plateau en bois.</div>
+    <div class="txt-ar">تمثال محارب منحوت يحوّل طقوس بخورك إلى فن حقيقي. تشطيب فاخر على صينية خشبية.</div>
+  </div>
 
-        <div id="commande" class="px-6 py-8 bg-gray-900 text-white rounded-t-3xl mt-4">
-            <h2 class="text-2xl font-bold text-center mb-2 text-yellow-400">Finaliser la Commande</h2>
-            
-            <form id="orderForm" class="space-y-4">
-                <div>
-                    <label class="block font-semibold mb-2" for="nom">Nom & Prénom *</label>
-                    <input class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white" type="text" id="nom" name="nom" required>
-                </div>
-                <div>
-                    <label class="block font-semibold mb-2" for="telephone">Numéro de Téléphone *</label>
-                    <input class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white" type="tel" id="telephone" name="telephone" required>
-                </div>
-                <div>
-                    <label class="block font-semibold mb-2" for="adresse">Adresse de Livraison *</label>
-                    <textarea class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white" id="adresse" name="adresse" rows="3" required></textarea>
-                </div>
+  <!-- FORMULA SELECTOR HERO -->
+  <div class="formula-row">
+    <div class="formula-card selected" id="hero-f1" onclick="selectFormula(1)">
+      <div class="formula-qty">1 <span>pièce / قطعة</span></div>
+      <div class="formula-labels">Formule Essentielle<br>الباقة الأساسية</div>
+      <div class="formula-price">199 <small>DH</small></div>
+    </div>
+    <div class="formula-card" id="hero-f2" onclick="selectFormula(2)">
+      <div class="formula-badge">⭐ Meilleure Offre · أفضل عرض</div>
+      <div class="formula-qty">2 <span>pièces / قطعتان</span></div>
+      <div class="formula-labels">Formule Duo<br>باقة الثنائي</div>
+      <div class="formula-price">299 <small>DH</small></div>
+      <div class="formula-saving">Économisez 99 DH · وفّر 99 درهم</div>
+    </div>
+  </div>
 
-                <button type="submit" id="submitBtn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-lg shadow-lg transition transform">
-                    CONFIRMER - تأكيد الطلب
-                </button>
-            </form>
-            
-            <div id="successMessage" class="hidden mt-4 p-4 bg-green-700 text-white text-center rounded-lg font-bold">
-                Commande reçue avec succès ! Merci. 🚚
-            </div>
-        </div>
-    </main>
+  <a href="#order" class="cta-btn">
+    ⚔️ Commander Maintenant
+    <span class="sub">اطلب الآن</span>
+  </a>
 
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyaIAUukbsTOJh8lPHs0NrfA69qYzUaOClCK1I-6mprQ9HpxCu2KV-5w4VxxUNGTrryqg/exec';
-        const form = document.getElementById('orderForm');
-        const btn = document.getElementById('submitBtn');
-        const msg = document.getElementById('successMessage');
+  <div class="trust-row">
+    <div class="trust-pill">
+      <span>🚚</span>
+      <span class="tp-fr">Livraison gratuite</span>
+      <span class="tp-ar">توصيل مجاني</span>
+    </div>
+    <div class="trust-pill">
+      <span>💰</span>
+      <span class="tp-fr">Paiement à la livraison</span>
+      <span class="tp-ar">الدفع عند الاستلام</span>
+    </div>
+    <div class="trust-pill">
+      <span>🇲🇦</span>
+      <span class="tp-fr">Partout au Maroc</span>
+      <span class="tp-ar">جميع أنحاء المغرب</span>
+    </div>
+  </div>
+</section>
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = "Envoi en cours...";
-            
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    form.reset();
-                    msg.classList.remove('hidden');
-                    btn.innerText = "CONFIRMER - تأكيد الطلب";
-                    btn.disabled = false;
-                })
-                .catch(error => console.error('Error!', error.message));
-        });
-    </script>
+<div class="ornament">― ✦ ―</div>
+
+<!-- ═══ GALLERY ═══ -->
+<div class="section">
+  <div class="sec-head">
+    <span class="sec-eyebrow">Galerie · معرض المنتج</span>
+    <div class="sec-title-fr">Le Guerrier en Action</div>
+    <div class="sec-title-ar">المقاتل في العمل</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="gallery-grid">
+    <div class="main-img"><img class="gallery-img" src="2.jpeg" alt="Porte-encens samouraï" loading="lazy"/></div>
+    <div><img class="gallery-img" src="1.jpeg" alt="Gros plan" loading="lazy"/></div>
+    <div><img class="gallery-img" src="3.jpeg" alt="Édition dorée" loading="lazy"/></div>
+  </div>
+  <div class="video-wrap">
+    <video controls preload="metadata" poster="2.jpeg">
+      <source src="video.mp4" type="video/mp4"/>
+    </video>
+  </div>
+</div>
+
+<!-- ═══ FEATURES ═══ -->
+<div class="section" style="padding-top:0">
+  <div class="sec-head">
+    <span class="sec-eyebrow">Caractéristiques · المميزات</span>
+    <div class="sec-title-fr">Conçu pour l'Excellence</div>
+    <div class="sec-title-ar">صُمّم للتميّز</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <span class="feat-icon">⚔️</span>
+      <div class="feat-title-fr">Résine Premium</div>
+      <div class="feat-title-ar">راتنج ممتاز</div>
+      <p class="feat-desc-fr">Figurine en résine haute densité, détails fins, finition mat noir ou dorée.</p>
+      <p class="feat-desc-ar">تمثال من الراتنج عالي الكثافة بتفاصيل دقيقة، تشطيب أسود أو ذهبي.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🪵</span>
+      <div class="feat-title-fr">Plateau en Bois</div>
+      <div class="feat-title-ar">صينية خشبية</div>
+      <p class="feat-desc-fr">Plateau ovale en bois massif teinté noir, pour recueillir les cendres avec élégance.</p>
+      <p class="feat-desc-ar">صينية بيضاوية من الخشب الصلب المصبوغ بالأسود، تجمع الرماد بأناقة.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">✨</span>
+      <div class="feat-title-fr">Déco & Ambiance</div>
+      <div class="feat-title-ar">ديكور وأجواء</div>
+      <p class="feat-desc-fr">Sublime salon, bureau ou chambre. Atmosphère zen garantie.</p>
+      <p class="feat-desc-ar">يُجمّل الصالون والمكتب والغرفة. أجواء زن مضمونة.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🎁</span>
+      <div class="feat-title-fr">Cadeau Parfait</div>
+      <div class="feat-title-ar">هدية مثالية</div>
+      <p class="feat-desc-fr">Original et mémorable pour toutes les occasions. Idéal en duo.</p>
+      <p class="feat-desc-ar">أصلية ولا تُنسى لكل المناسبات. مثالية كثنائي للإهداء.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ornament">― ✦ ―</div>
+
+<!-- ═══ ORDER FORM ═══ -->
+<div class="form-section" id="order">
+  <div class="form-wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Commande · الطلب</span>
+      <div class="sec-title-fr">Passez votre commande</div>
+      <div class="sec-title-ar">ضع طلبك الآن</div>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="msg-box msg-success" id="msg-success">
+      ✅ Commande reçue ! Nous vous contacterons très bientôt.
+      <div class="mb-ar">✅ تم استلام طلبك! سنتواصل معك قريبًا لتأكيد التوصيل.</div>
+    </div>
+    <div class="msg-box msg-error" id="msg-error">
+      ❌ Une erreur s'est produite. Réessayez ou contactez-nous sur WhatsApp.
+      <div class="mb-ar">❌ حدث خطأ. حاول مجددًا أو تواصل معنا عبر واتساب.</div>
+    </div>
+
+    <!-- formula picker form -->
+    <div class="form-formula-row">
+      <div class="form-formula-card selected" id="form-f1" onclick="selectFormula(1)">
+        <div class="ffc-qty">1 pièce / قطعة</div>
+        <div class="ffc-price">199 DH</div>
+      </div>
+      <div class="form-formula-card" id="form-f2" onclick="selectFormula(2)">
+        <div class="ffc-qty">2 pièces / قطعتان</div>
+        <div class="ffc-price">299 DH</div>
+        <div class="ffc-save">-99 DH · وفّر</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Nom complet <span class="lbl-ar">الاسم الكامل</span></label>
+      <input type="text" id="f-name" placeholder="Mohammed Alami / محمد العلمي"/>
+    </div>
+    <div class="form-group">
+      <label>Téléphone <span class="lbl-ar">رقم الهاتف</span></label>
+      <input type="tel" id="f-phone" placeholder="06 XX XX XX XX"/>
+    </div>
+    <div class="form-group">
+      <label>Ville <span class="lbl-ar">المدينة</span></label>
+      <input type="text" id="f-city" placeholder="Casablanca · Rabat · Marrakech..."/>
+    </div>
+    <div class="form-group">
+      <label>Adresse <span class="lbl-ar">العنوان</span></label>
+      <input type="text" id="f-address" placeholder="Rue, quartier... / الشارع، الحي..."/>
+    </div>
+
+    <div class="total-line">
+      <div class="total-label">
+        <span class="tl-fr">Total à payer</span>
+        <span class="tl-ar">المبلغ الإجمالي</span>
+      </div>
+      <span class="total-amount" id="total-display">199 DH</span>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="submitOrder()">
+      🛡️ Confirmer — Paiement à la livraison
+      <span class="sb-ar">تأكيد الطلب — الدفع عند الاستلام</span>
+    </button>
+
+    <div class="form-note">
+      <span><span>🚚</span><span>Livraison gratuite</span><span class="fn-ar">توصيل مجاني</span></span>
+      <span><span>⏱️</span><span>2–5 jours ouvrés</span><span class="fn-ar">2-5 أيام عمل</span></span>
+      <span><span>💬</span><span>Support WhatsApp</span><span class="fn-ar">دعم واتساب</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><span class="footer-gold">⚔️ Porte-Encens Samouraï · حامل البخور الساموراي</span></p>
+  <span class="footer-ar">توصيل مجاني لجميع أنحاء المغرب · 199 DH / 299 DH</span>
+</footer>
+
+<script>
+  const FORMULAS={1:{price:199,qty:1},2:{price:299,qty:2}};
+  let selectedFormula=1;
+
+  function selectFormula(f){
+    selectedFormula=f;
+    ['hero-f1','form-f1'].forEach(id=>document.getElementById(id).classList.toggle('selected',f===1));
+    ['hero-f2','form-f2'].forEach(id=>document.getElementById(id).classList.toggle('selected',f===2));
+    document.getElementById('total-display').textContent=FORMULAS[f].price+' DH';
+  }
+
+  async function submitOrder(){
+    const name=document.getElementById('f-name').value.trim();
+    const phone=document.getElementById('f-phone').value.trim();
+    const city=document.getElementById('f-city').value.trim();
+    const address=document.getElementById('f-address').value.trim();
+    if(!name||!phone||!city||!address){
+      alert('Veuillez remplir tous les champs · يرجى ملء جميع الحقول');
+      return;
+    }
+    const btn=document.getElementById('submit-btn');
+    btn.disabled=true;
+    btn.textContent='⏳ Envoi... جاري الإرسال';
+
+    const f=FORMULAS[selectedFormula];
+    const params=new URLSearchParams({
+      Nom:name,Telephone:phone,Ville:city,Adresse:address,
+      Formule:selectedFormula===1?'1 pièce - 199 DH':'2 pièces - 299 DH',
+      Quantite:f.qty,Total:f.price+' DH',
+      Date:new Date().toLocaleString('fr-MA')
+    });
+
+    try{
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbyPioZOBcWcgZtUwW_Nxs8BljQeaphUxE_mDzed550eU1Wh9eyiwp11CbSL-gttnX3R/exec?'+params,
+        {method:'GET',mode:'no-cors'}
+      );
+      // redirect to thank you page
+      window.location.href='thankyou.html';
+    }catch(e){
+      document.getElementById('msg-error').style.display='block';
+      btn.disabled=false;
+      btn.innerHTML='🛡️ Confirmer — Paiement à la livraison<span class="sb-ar">تأكيد الطلب — الدفع عند الاستلام</span>';
+    }
+  }
+</script>
 </body>
 </html>
