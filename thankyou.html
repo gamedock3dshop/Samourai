@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Merci pour votre commande ! | شكراً لطلبك</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F3E5AB;
+  --gold-dim: #8A6D2C;
+  --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  --black: #030303;
+  --dark: #0A0A0A;
+  --card: rgba(20, 20, 20, 0.7);
+  --card-border: rgba(212, 175, 55, 0.2);
+  --text: #F8F5F0;
+  --muted: #A39B8E;
+  --white: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background-color: var(--black);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05), transparent 60%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 24px;
+}
+
+.thankyou-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212, 175, 55, 0.1);
+  animation: floatUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes floatUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(39, 174, 96, 0.1);
+  border: 2px solid #27AE60;
+  color: #27AE60;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 20px rgba(39, 174, 96, 0.2);
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.6rem;
+  color: var(--gold-light);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.samurai-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 16px;
+  border: 1px solid var(--gold-dim);
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+p.txt-fr {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+p.txt-ar {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+  direction: rtl;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gold-gradient);
+  color: var(--black);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+  width: 100%;
+}
+
+.cta-btn span.sub {
+  font-size: 11px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.4);
+}
+</style>
+</head>
+<body>
+
+  <div class="thankyou-card">
+    <div class="success-icon">✓</div>
+    
+    <h1>Merci !</h1>
+    <h2>شكراً لك!</h2>
+
+    <!-- L'image du samouraï que tu as demandée -->
+    <img src="watermarked_img_4476842302070446174.png" alt="Samouraï de remerciement" class="samurai-img" />
+
+    <p class="txt-fr">Votre commande a été reçue avec succès. Notre équipe vous contactera très prochainement sur WhatsApp ou par téléphone pour confirmer l'expédition.</p>
+    <p class="txt-ar">تم استلام طلبك بنجاح. سيتواصل معك فريقنا قريباً عبر واتساب أو الهاتف لتأكيد الشحن.</p>
+
+    <a href="index.html" class="cta-btn">
+      Retour à la boutique
+      <span class="sub">العودة إلى المتجر</span>
+    </a>
+  </div>
+
+</body>
+</html>
