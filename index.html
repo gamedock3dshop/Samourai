@@ -1,0 +1,138 @@
+html_content = """<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porte-Encens Samouraï - حامل البخور ساموراي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; }
+        .arabic-text { font-family: 'Cairo', sans-serif; direction: rtl; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased relative">
+
+    <!-- Bouton WhatsApp Flottant -->
+    <a href="https://wa.me/212664601352?text=Bonjour,%20je%20suis%20intéressé(e)%20par%20le%20Porte-Encens%20Samouraï.%20-%20مرحباً،%20أنا%20مهتم%20بحامل%20البخور%20ساموراي." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 hover:bg-green-600 transition-transform transform hover:scale-110 flex items-center justify-center animate-bounce"
+       aria-label="Contactez-nous sur WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <!-- Banner -->
+    <header class="bg-black text-white text-center py-3 sticky top-0 z-40">
+        <p class="text-sm font-bold text-yellow-400 animate-pulse">🔥 Offre Spéciale : 199 DH - عرض خاص<br>Paiement à la livraison - الدفع عند الاستلام</p>
+    </header>
+
+    <main class="max-w-md mx-auto bg-white shadow-2xl min-h-screen pb-10">
+        
+        <div class="px-4 pt-6 pb-4 text-center">
+            <h1 class="text-2xl font-extrabold text-gray-900 mb-2">Porte-Encens Samouraï 🧘‍♂️⚔️</h1>
+            <h1 class="text-2xl font-extrabold text-gray-900 arabic-text">حامل البخور ساموراي 🧘‍♂️⚔️</h1>
+        </div>
+
+        <!-- Vidéo -->
+        <div class="w-full bg-black">
+            <video class="w-full h-auto" controls autoplay muted loop playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+
+        <!-- CTA -->
+        <div class="px-6 py-6 text-center bg-gray-50 border-b border-gray-100">
+            <p class="text-4xl font-extrabold text-red-600 mb-1">199 DH</p>
+            <p class="text-sm text-gray-500 mb-2 font-semibold">Paiement à la réception 🚚</p>
+            <p class="text-sm text-gray-500 mb-5 font-semibold arabic-text">الدفع عند الاستلام 🚚</p>
+            <a href="#commande" class="bg-green-600 hover:bg-green-700 text-white font-bold text-lg py-4 px-8 rounded-full block w-full shadow-lg transition transform hover:scale-105">
+                COMMANDER MAINTENANT <br> <span class="arabic-text block mt-1 text-base">اطلب الآن</span>
+            </a>
+        </div>
+
+        <!-- Photos & Description -->
+        <div class="px-6 py-6 space-y-6">
+            <div>
+                <h2 class="text-xl font-bold mb-3 text-gray-900 border-l-4 border-yellow-500 pl-3">L'Équilibre Parfait</h2>
+                <p class="text-gray-600 text-justify leading-relaxed mb-4">
+                    Donnez une touche d'élégance Zen à votre intérieur. Ce magnifique porte-encens représentant un Samouraï en pleine concentration capture l'esprit du Bushido.
+                </p>
+                <div class="arabic-text">
+                    <h2 class="text-xl font-bold mb-3 text-gray-900 border-r-4 border-yellow-500 pr-3">التوازن المثالي</h2>
+                    <p class="text-gray-600 text-justify leading-relaxed">
+                        أضف لمسة من الأناقة والهدوء إلى منزلك. حامل البخور الرائع هذا الذي يمثل ساموراي في قمة تركيزه، يجسد روح البوشيدو (طريق المحارب).
+                    </p>
+                </div>
+            </div>
+            
+            <img src="2.jpeg" alt="Samouraï Noir" class="w-full rounded-xl shadow-md border border-gray-100">
+            
+            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2 font-medium mb-4">
+                    <li>Favorise la relaxation et réduit le stress</li>
+                    <li>Impression 3D détaillée de haute qualité</li>
+                    <li>Disponible en finition Noire ou Dorée</li>
+                </ul>
+                <ul class="list-disc pr-5 text-gray-700 space-y-2 font-medium arabic-text">
+                    <li>يساعد على الاسترخاء ويقلل من التوتر</li>
+                    <li>طباعة ثلاثية الأبعاد عالية الجودة بتفاصيل دقيقة</li>
+                    <li>متوفر باللونين الأسود أو الذهبي</li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <img src="1.jpeg" alt="Détail Samouraï" class="w-full h-auto rounded-xl shadow-md object-cover">
+                <img src="3.jpeg" alt="Samouraï Doré" class="w-full h-auto rounded-xl shadow-md object-cover">
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div id="commande" class="px-6 py-8 bg-gray-900 text-white rounded-t-3xl mt-4">
+            <h2 class="text-2xl font-bold text-center mb-1 text-yellow-400">Finaliser la Commande</h2>
+            <h2 class="text-2xl font-bold text-center mb-2 text-yellow-400 arabic-text">إتمام الطلب</h2>
+            <p class="text-center text-sm text-gray-300 mb-6">Remplissez ce formulaire pour recevoir votre commande.<br><span class="arabic-text">المرجوا ملء هذه الاستمارة لطلب المنتج.</span></p>
+            
+            <form action="#" method="POST" class="space-y-4">
+                <div>
+                    <label class="block font-semibold mb-2" for="nom">Nom & Prénom * / <span class="arabic-text">الاسم الكامل *</span></label>
+                    <input class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-400" type="text" id="nom" name="nom" placeholder="Ex: Amine Benali / أمين بنعلي" required>
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-2" for="telephone">Numéro de Téléphone * / <span class="arabic-text">رقم الهاتف *</span></label>
+                    <input class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-400" type="tel" id="telephone" name="telephone" placeholder="Ex: 06 12 34 56 78" required>
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-2" for="adresse">Adresse de Livraison * / <span class="arabic-text">عنوان التوصيل *</span></label>
+                    <textarea class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-yellow-400" id="adresse" name="adresse" rows="3" placeholder="Ville, Quartier, Rue... / المدينة، الحي، الشارع..." required></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 rounded-lg shadow-lg mt-4 transition transform hover:scale-105">
+                    CONFIRMER - تأكيد الطلب
+                </button>
+
+                <div class="flex items-center justify-center my-4">
+                    <span class="text-gray-500 text-sm font-bold">--- OU / أو ---</span>
+                </div>
+
+                <a href="https://wa.me/212664601352?text=Bonjour,%20je%20suis%20intéressé(e)%20par%20le%20Porte-Encens%20Samouraï.%20-%20مرحباً،%20أنا%20مهتم%20بحامل%20البخور%20ساموراي." 
+                   target="_blank" 
+                   class="w-full bg-[#25D366] hover:bg-green-600 text-white font-bold text-lg py-4 rounded-lg shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                    </svg>
+                    Commander via WhatsApp <br> <span class="arabic-text text-sm">الطلب عبر واتساب</span>
+                </a>
+
+                <p class="text-center text-xs text-gray-400 mt-4">Livraison rapide partout au Maroc 🇲🇦 <br> <span class="arabic-text">توصيل سريع لجميع أنحاء المغرب</span></p>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
